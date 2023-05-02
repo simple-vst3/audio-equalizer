@@ -8,7 +8,8 @@
 
 #pragma once
 
-#include <JuceHeader.h>
+#include <JuceHeader.h>;
+
 
 //==============================================================================
 /**
@@ -62,6 +63,16 @@ public:
 
 
 private:
+    using Filter = juce::dsp::IIR::Filter<float>;
+
+    using CutFilter = juce::dsp::ProcessorChain<Filter, Filter, Filter, Filter>;
+    
+    using MonoChain = juce::dsp::ProcessorChain<CutFilter, Filter, CutFilter>;
+
+    MonoChain leftChain, rightChain;
+
+
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SimpleEQAudioProcessor)
 };
