@@ -28,12 +28,14 @@ SimpleEQAudioProcessorEditor::SimpleEQAudioProcessorEditor(SimpleEQAudioProcesso
         addAndMakeVisible(comp);
     }
 
+
     const auto& params = audioProcessor.getParameters();
     for (auto param : params)
     {
         param->addListener(this);
     }
 
+    startTimerHz(60);
     setSize (600, 400);
 }
 
