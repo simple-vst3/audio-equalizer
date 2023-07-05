@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include <JuceHeader.h>;
+#include <JuceHeader.h>
 
 enum Slope
 {
@@ -27,6 +27,8 @@ struct ChainSettings
     Slope lowCutSlope{ Slope::Slope_12 }, highCutSlope{ Slope::Slope_12 };
 
 };
+
+ChainSettings getChainSettings(juce::AudioProcessorValueTreeState& apvts);
 
 using Filter = juce::dsp::IIR::Filter<float>;
 
@@ -107,9 +109,7 @@ private:
     MonoChain leftChain, rightChain;
 
 
-    void updatePeakFilter(const ChainSettings& chainSettings);
-    using Coefficients = Filter::CoefficientsPtr;
-    static void updateCoefficients(Coefficients& old, const Coefficients& replacements);
+    void updatePeakFilter(const ChainSettings& chainSettings) ;
 
     template<int Index, typename ChainType, typename CoefficientType>
     void update(ChainType& chain, const CoefficientType& coefficients)
@@ -154,6 +154,7 @@ private:
     
     void updateLowCutFilters(const ChainSettings& chainSettings);
     void updateHighCutFilters(const ChainSettings& chainSettings);
+    
     void updateFilters();
 
     //==============================================================================

@@ -9,7 +9,7 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-ChainSettings getChainSettings(juce::AudioProcessorValueTreeState& apvts);
+//ChainSettings getChainSettings(juce::AudioProcessorValueTreeState& apvts);
 
 //==============================================================================
 SimpleEQAudioProcessor::SimpleEQAudioProcessor()
@@ -229,6 +229,7 @@ ChainSettings getChainSettings(juce::AudioProcessorValueTreeState& apvts)
     return settings;
 }
 
+
 Coefficients makePeakFilter(const ChainSettings& chainSettings, double sampleRate)
 {
     return juce::dsp::IIR::Coefficients<float>::makePeakFilter(sampleRate,
@@ -246,7 +247,8 @@ void SimpleEQAudioProcessor::updatePeakFilter(const ChainSettings& chainSettings
     updateCoefficients(rightChain.get<ChainPositions::Peak>().coefficients, peakCoefficients);
 }
 
-void SimpleEQAudioProcessor::updateCoefficients(Coefficients& old, const Coefficients& replacements)
+
+void updateCoefficients(Coefficients& old, const Coefficients& replacements)
 {
     *old = *replacements;
 }
