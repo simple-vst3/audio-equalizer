@@ -29,7 +29,7 @@ SimpleEQAudioProcessor::SimpleEQAudioProcessor()
 SimpleEQAudioProcessor::~SimpleEQAudioProcessor()
 {
 }
-
+ 
 //==============================================================================
 const juce::String SimpleEQAudioProcessor::getName() const
 {
