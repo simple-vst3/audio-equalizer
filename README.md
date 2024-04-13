@@ -1,6 +1,6 @@
 ﻿# Audio Equalizer
 
-## EQ Plugin for music production using JUCE 
+## EQ Plugin for music production!
   
 ### Features:
 - Sliding knobs to modify the tonal quality of audio recordings
